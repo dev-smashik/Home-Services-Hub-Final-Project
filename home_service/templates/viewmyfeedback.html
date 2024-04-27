@@ -1,0 +1,118 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block body %}
+<style>
+   td{color : black}
+</style>
+
+	<div class="w3l_banner_info" style="height:10px">
+		<div class="slider1">
+			<div class="callbacks_container">
+				<ul class="rslides" id="slider3">
+					<li>
+						<div class="slider1-img" style="height:90px">
+							<div class="slider_banner_info">
+
+
+							</div>
+						</div>
+					</li>
+
+
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- //banner-slider -->
+</div>
+</header>
+
+<div class="container-fluid" style="margin-top:10%">
+               <div class="container">
+                            <div class="container-fluid">
+                               <h2 style="font-weight:bold;font-family : 'Monotype Corsiva' ; color : #E6120E ;margin-top:5%" align="center">View My Feedback</h2><hr>
+                            </div>
+
+
+                                <div class="table-responsive">
+                                <table class="table table-hover">
+                            <table border="1" class="table table-bordered table-striped table-vcenter js-dataTable-full-pagination">
+                            	<tr>
+<td colspan="6" style="font-size:20px;color:red;text-align: center;">
+ Service Order Number: {{feedback.order.id}}</td></tr>
+ <tr>
+<td colspan="6" style="font-size:18px;color:blue">
+ Customer Details</td></tr>
+                                            <tr>
+    <th>Name</th>
+     <td>{{feedback.order.customer.user.first_name}} {{feedback.order.customer.user.last_name}}</td>
+     <th>Mobile Number</th>
+    <td>{{feedback.order.customer.contact}}</td>
+    <th>Email</th>
+    <td>{{feedback.order.customer.user.email}}</td>
+  </tr>
+
+                                <tr>
+<td colspan="6" style="font-size:18px;color:blue">
+ Service Person Details</td></tr>
+                                            <tr>
+    <th>Name</th>
+     <td>{{feedback.order.service.user.first_name}} {{feedback.order.service.user.last_name}}</td>
+     <th>Mobile Number</th>
+    <td>{{feedback.order.service.contact}}</td>
+    <th>Email</th>
+    <td>{{feedback.order.service.user.email}}</td>
+  </tr>
+
+                                                                        <tr>
+    <th>Service Name</th>
+     <td>{{feedback.order.service.user.first_name}} {{feedback.order.service.user.last_name}}</td>
+     <th>Experience</th>
+    <td>{{feedback.order.service.experience}}</td>
+    <th>Service City</th>
+    <td>{{feedback.order.service.city}}</td>
+  </tr>
+
+
+
+    <tr>
+<td colspan="6" style="font-size:18px;color:blue">
+ Feedback Details</td></tr>
+    <th>Friendliness</th>
+   <td>{{feedback.friendliness}}</td>
+    <th>Knowledge</th>
+    <td>{{feedback.knowledge}}</td>
+    <th>Quickness</th>
+    <td>{{feedback.quickness}}</td>
+  </tr>
+   <tr>
+
+    <th colspan="2">Would you use our customer service in the future?</th>
+    <td>{{feedback.infuture}}</td>
+
+     <th colspan="2">Feedback Date</th>
+    <td>{{feedback.feedbackdate}}</td>
+  </tr>
+  <tr>
+
+     <th colspan="6">How can we improve our service?</th>
+
+
+  </tr>
+
+                                <tr>
+
+     <td colspan="6">{{feedback.suggestion}}</td>
+
+
+  </tr>
+
+
+
+
+                      </table>
+                  </div>
+      </div>
+</div>
+    {% endblock %}
