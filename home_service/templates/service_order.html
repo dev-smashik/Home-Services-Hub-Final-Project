@@ -1,0 +1,56 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+<style>
+    th{
+    color:black;
+    font-weight:bold;
+    }
+</style>
+
+<div class="container-fluid" style="margin-top:10%">
+               <div class="container">
+                            <div class="container-fluid">
+                               <h2 style="font-weight:bold;font-family : 'Poppins' ; color : black ;margin-top:5%" align="center">Orders</h2><hr>
+                            </div>
+                                <table class="table table-hover">
+                                  <thead>
+                                    <tr>
+                                      <th style="color:black">No.</th>
+                                      <th style="color:black">Full Name</th>
+                                      <th style="color:black">Contact</th>
+                                      <th style="color:black">Address</th>
+                                      <th style="color:black">Date</th>
+                                      <th style="color:black">Days</th>
+                                      <th style="color:black">Hours</th>
+                                      <th style="color:black">Status</th>
+                                      <th style="color:black">Action</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                              {% for i in order %}
+                                <tr>
+                                  <td>{{forloop.counter}}</td>
+                                  <td>{{i.customer.user.first_name}} {{i.customer.user.last_name}}</td>
+                                  <td>{{i.customer.contact}}</td>
+                                  <td>{{i.customer.address}}</td>
+                                  <td>{{i.book_date}}</td>
+                                  <td>{{i.book_days}}</td>
+                                  <td>{{i.book_hours}}</td>
+                                  {% if i.status.status == 'Accept' %}
+                                  <td><span style="color:white;background:green;padding:0.2em 0.8em 0.2em 0.8em;border-radius:8%">{{i.status.status}}</span></td>
+                                  {% else %}
+                                  <td><span style="color:white;background:red;padding:0.2em 0.8em 0.2em 0.8em;border-radius:8%">{{i.status.status}}</span></td>
+                                  {% endif %}
+                                  {% if i.status.status == 'Accept' %}
+                                  <td style="font-weight:bold;color:blue">Accepted</td>
+                                  {% else %}
+                                  <td><a href="{% url 'accept_confirmation' i.id %}" ><button class="btn btn-success"  onclick="return confirm('Are You Confirm for Accept Order?')"><i class="fa fa-thumbs-up"></i> Confirm</button></a></td>
+                                  {% endif %}
+                              </tr>
+                              {% endfor %}
+                          </tbody>
+                      </table>
+             </div>
+</div>
+    {% endblock %}
