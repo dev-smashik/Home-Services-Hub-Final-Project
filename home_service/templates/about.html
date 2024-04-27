@@ -1,0 +1,122 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+	
+<style>
+	section{
+		padding-top: 40px;
+	  }
+	  section .content{
+		width: 80%;
+		margin: 40px auto;
+		font-family: 'Poppins', sans-serif;
+	  }
+	  .about .about-details{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	  }
+	  section .title{
+		display: flex;
+		justify-content: center;
+		margin-bottom: 40px;
+	  }
+	  section .title span{
+		color: #0E2431;
+		font-size: 30px;
+		font-weight: 600;
+		position: relative;
+		padding-bottom: 8px;
+	  }
+	  section .title span::before,
+	  section .title span::after{
+		content: '';
+		position: absolute;
+		height: 3px;
+		width: 100%;
+		background: green;
+		left: 0;
+		bottom: 0;
+	  }
+	  section .title span::after{
+		bottom: -7px;
+		width: 70%;
+		left: 50%;
+		transform: translateX(-50%);
+	  }
+	  .about .about-details .left{
+		width: 45%;
+	  }
+	  .about .left img{
+		height: 400px;
+		width: 400px;
+		object-fit: cover;
+		border-radius: 12px;
+	  }
+	  .about-details .right{
+		width: 55%;
+	  }
+	  section  .topic{
+		color: #0E2431;
+		font-size: 25px;
+		font-weight: 500;
+		margin-bottom: 10px;
+	  }
+	  .about-details .right p{
+		text-align: justify;
+		color: #0E2431;
+	  }
+	  section .button{
+		margin: 16px 0;
+	  }
+	  section .button button{
+		outline: none;
+		padding: 8px 16px;
+		border-radius: 4px;
+		font-size: 25px;
+		font-weight: 400;
+		background: #4070f4;
+		color: #fff;
+		border: 2px solid transparent;
+		cursor: pointer;
+		transition: all 0.4s ease;
+	  }
+	  section .button button:hover{
+		border-color: #4070f4;
+		background-color: #fff;
+		color: #4070f4;
+	  }
+	  
+</style>
+
+
+<section class="about py-lg-5 py-md-4 py-md-3 py-2" id="about">
+<div class="content">
+        <div class="title"><span>About Our Home Services Hub</span></div>
+        <div class="about-details">
+          <div class="left">
+            <img src="./static/images/About Us.avif" alt="" />
+          </div>
+          <div class="right">
+            <div class="topic">Your Ultimate Home Maintenance Solution</div>
+            <p>
+             Home Services Hub is your all-in-one platform for efficient and reliable home maintenance services. 
+             We connect you with trusted, skilled professionals across a range of services, including plumbing, 
+             electrical work, cleaning, landscaping, and more. Our user-friendly platform allows you to book 
+             appointments, receive quotes, and access quality service providers quickly and conveniently. 
+             Each professional is vetted for expertise and reliability, ensuring you receive top-notch service 
+             every time. Whether you need a one-time repair or regular upkeep, Home Services Hub streamlines the 
+             process, providing personalized support and tailored solutions to keep your home in top shape.
+            </p>
+            <div class="button">
+              {% comment %} <a href="#" class="btn btn-primary" style="background-color: green;">Our Services</a> {% endcomment %}
+            </div>
+          </div>
+        </div>
+      </div>
+</section>
+
+
+
+{% endblock %}
+
