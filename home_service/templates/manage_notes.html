@@ -1,0 +1,62 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+<style>
+    th{
+    color:black;
+    font-weight:bold;
+    }
+</style>
+
+	<div class="w3l_banner_info" style="height:10px">
+		<div class="slider1">
+			<div class="callbacks_container">
+				<ul class="rslides" id="slider3">
+					<li>
+						<div class="slider1-img" style="height:10px">
+							<div class="slider_banner_info">
+
+
+							</div>
+						</div>
+					</li>
+
+
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- //banner-slider -->
+</div>
+</header>
+
+<div class="container-fluid" style="margin-top:10%">
+               <div class="container">
+                            <div class="container-fluid">
+                               <h2 style="font-weight:bold;font-family : 'Monotype Corsiva' ; color : #E6120E ;margin-top:5%" align="center">Manage Notes</h2><hr>
+                            </div>
+                                <table class="table table-hover">
+                                  <thead>
+                                    <tr>
+                                      <th style="color:black">#</th>
+                                      <th style="color:black">Notes File</th>
+                                      <th style="color:black">Uploading Date</th>
+
+                                      <th style="color:black">Action</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                              {% for i in notes %}
+                                <tr>
+                                  <td>{{forloop.counter}}</td>
+                                  <td><a href="{{i.notesfile.url}}" download>Download Notes File({{i.notesfile}})</a></td>
+                                  <td>{{i.uploaddate}}</td>
+                                  <td><a href="{% url 'delete_notes' i.id %}" ><button class="btn btn-success"  onclick="return confirm('Are You Really want to delete?')"><i class="fa fa-trash"></i> Delete</button></a></td>
+
+                              </tr>
+                              {% endfor %}
+                          </tbody>
+                      </table>
+             </div>
+</div>
+    {% endblock %}
