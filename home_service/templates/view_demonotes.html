@@ -1,0 +1,55 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+
+	<div class="w3l_banner_info" style="height:0px">
+		<div class="slider1">
+			<div class="callbacks_container">
+				<ul class="rslides" id="slider3">
+					<li>
+						<div class="slider1-img" style="height:0px">
+							<div class="slider_banner_info">
+
+
+							</div>
+						</div>
+					</li>
+
+
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- //banner-slider -->
+</div>
+</header>
+
+<div class="container-fluid" style="margin-top:10%">
+               <div class="container">
+                            <div class="container-fluid">
+                               <h2 style="font-weight:bold;font-family : 'Monotype Corsiva' ; color : #E6120E ;margin-top:5%" align="center">View Demo Notes of Tutor ({{serviceman.user.first_name }} {{serviceman.user.last_name }})</h2><hr>
+                            </div>
+                                <table class="table table-hover">
+                                  <thead>
+                                    <tr>
+                                      <th style="color:black">#</th>
+                                      <th style="color:black">Notes File</th>
+                                      <th style="color:black">Uploading Date</th>
+
+                                  </tr>
+                              </thead>
+                              <tbody>
+                              {% for i in notes %}
+                                <tr>
+                                  <td>{{forloop.counter}}</td>
+                                  <td><a href="{{i.notesfile.url}}" download>Download Notes File({{i.notesfile}})</a></td>
+                                  <td>{{i.uploaddate}}</td>
+
+
+                              </tr>
+                              {% endfor %}
+                          </tbody>
+                      </table>
+             </div>
+</div>
+    {% endblock %}

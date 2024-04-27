@@ -1,0 +1,78 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+
+	<div class="w3l_banner_info" style="height:10px">
+		<div class="slider1">
+			<div class="callbacks_container">
+				<ul class="rslides" id="slider3">
+					<li>
+						<div class="slider1-img" style="height:10px">
+							<div class="slider_banner_info">
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- //banner-slider -->
+</div>
+</header>
+<section class="contact  py-lg-5 py-md-4 py-md-3 py-2" id="contact" style="margin-top:7%">
+<h3 class="mb-lg-4 mb-md-3 mb-sm-2 mb-2">Upload Demo Notes</h3>
+	<!-- contact -->
+	<section class="wthree-row py-5 w3-contact" id="contact">
+		<div class="container py-md-5">
+			<h5 class="w3ls-title text-center text-uppercase pb-md-5 pb-4">Upload Notes</h5>
+			<div class="row contact-form ">
+                <div class="col-lg-6  mt-lg-0 mt-5 map contact-right">
+
+					<div class="address mt-3">
+						<h5 class="pb-3 text-capitalize"></h5>
+						<address>
+							<img src="{% static 'images/sign3.jpg' %}" style="width:100%" alt/>
+						</address>
+					</div>
+				</div>
+				<div class="col-lg-6 wthree-form-left">
+					<!-- contact form grid -->
+					<div class="contact-top1">
+						<form action="#" method="post" class="f-color" enctype="multipart/form-data">
+                            {% csrf_token %}
+							<div class="row">
+                                <div class="col-md-6">
+								<label >Upload Notes File</label>
+                                    <input class="form-control" type="file" name="notesfile" placeholder="Upload Notes File" required="">
+							</div>
+
+
+                            </div>
+							<button type="submit" class="btn btn-info btn-block">Submit</button>
+						</form>
+							</div>
+					<!--  //contact form grid ends here -->
+				</div>
+				<!-- contact details -->
+				<!-- contact map grid -->
+
+				<!--//contact map grid ends here-->
+			</div>
+        </div>
+	</section>
+	</section>
+
+{% if error == "no" %}
+<script>
+    alert('Notes has been added.');
+    window.location=('{% url 'manage_notes' %}');
+</script>
+{% endif %}
+{% if error == "yes" %}
+<script>
+    alert('Something Went Wrong. Please try again');
+</script>
+{% endif %}
+
+
+{% endblock %}

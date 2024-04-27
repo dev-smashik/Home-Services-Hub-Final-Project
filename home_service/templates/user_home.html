@@ -1,0 +1,532 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+<style>
+	.hero-section {
+	  height: 100vh;
+	  background-image: url("./static/images/background Image.jpg");
+	  background-position: center;
+	  background-size: cover;
+	  display: flex;
+	  align-items: center;
+	  padding: 0 20px;
+	}
+	
+	.hero-section .content {
+	  max-width: 1200px;
+	  margin: 0 auto;
+	  width: 100%;
+	  color: #fff;
+	}
+	
+	.hero-section .content h2 {
+	  font-size: 3rem;
+	  max-width: 600px;
+	  line-height: 70px;
+	}
+	
+	.hero-section .content p {
+	  font-weight: 300;
+	  max-width: 600px;
+	  margin-top: 15px;
+	}
+	
+	.hero-section .content button {
+	  background: green;
+	  padding: 12px 30px;
+	  border: none;
+	  font-size: 1rem;
+	  border-radius: 6px;
+	  margin-top: 38px;
+	  cursor: pointer;
+	  font-weight: 500;
+	  transition: 0.2s ease;
+	}
+	
+	.hero-section .content button:hover {
+	  color: green;
+	  background: green;
+	}
+	
+	#close-menu-btn {
+	  position: absolute;
+	  right: 20px;
+	  top: 20px;
+	  cursor: pointer;
+	  display: none;
+	}
+	
+	#hamburger-btn {
+	  color: #fff;
+	  cursor: pointer;
+	  display: none;
+	}
+	
+	
+	
+	@media (max-width: 768px) {
+	  header {
+		padding: 10px;
+	  }
+	
+	  header.show-mobile-menu::before {
+		content: "";
+		position: fixed;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		backdrop-filter: blur(5px);
+	  }
+	
+	  .navbar .logo {
+		font-size: 1.7rem;
+	  }
+	
+		
+	  #hamburger-btn, #close-menu-btn {
+		display: block;
+	  }
+	
+	  .navbar .menu-links {
+		position: fixed;
+		top: 0;
+		left: -250px;
+		width: 250px;
+		height: 100vh;
+		background: #fff;
+		flex-direction: column;
+		padding: 70px 40px 0;
+		transition: left 0.2s ease;
+	  }
+	
+	  header.show-mobile-menu .navbar .menu-links {
+		left: 0;
+	  }
+	
+	  .navbar a {
+		color: #000;
+	  }
+	
+	  .hero-section .content {
+		text-align: center;
+	  }
+	
+	  .hero-section .content :is(h2, p) {
+		max-width: 100%;
+	  }
+	
+	  .hero-section .content h2 {
+		font-size: 2.3rem;
+		line-height: 60px;
+	  }
+	  
+	  .hero-section .content button {
+		padding: 9px 18px;
+	  }
+	}
+	
+	
+	section{
+	  padding-top: 40px;
+	}
+	section .content{
+	  width: 80%;
+	  margin: 40px auto;
+	  font-family: 'Poppins', sans-serif;
+	}
+	.about .about-details{
+	  display: flex;
+	  justify-content: space-between;
+	  align-items: center;
+	}
+	section .title{
+	  display: flex;
+	  justify-content: center;
+	  margin-bottom: 40px;
+	}
+	section .title span{
+	  color: #0E2431;
+	  font-size: 30px;
+	  font-weight: 600;
+	  position: relative;
+	  padding-bottom: 8px;
+	}
+	section .title span::before,
+	section .title span::after{
+	  content: '';
+	  position: absolute;
+	  height: 3px;
+	  width: 100%;
+	  background: green;
+	  left: 0;
+	  bottom: 0;
+	}
+	section .title span::after{
+	  bottom: -7px;
+	  width: 70%;
+	  left: 50%;
+	  transform: translateX(-50%);
+	}
+	.about .about-details .left{
+	  width: 45%;
+	}
+	.about .left img{
+	  height: 400px;
+	  width: 400px;
+	  object-fit: cover;
+	  border-radius: 12px;
+	}
+	.about-details .right{
+	  width: 55%;
+	}
+	section  .topic{
+	  color: #0E2431;
+	  font-size: 25px;
+	  font-weight: 500;
+	  margin-bottom: 10px;
+	}
+	.about-details .right p{
+	  text-align: justify;
+	  color: #0E2431;
+	}
+	section .button{
+	  margin: 16px 0;
+	}
+	section .button button{
+	  outline: none;
+	  padding: 8px 16px;
+	  border-radius: 4px;
+	  font-size: 25px;
+	  font-weight: 400;
+	  background: #4070f4;
+	  color: #fff;
+	  border: 2px solid transparent;
+	  cursor: pointer;
+	  transition: all 0.4s ease;
+	}
+	section .button button:hover{
+	  border-color: #4070f4;
+	  background-color: #fff;
+	  color: #4070f4;
+	}
+	
+	/* Testimonial Start*/
+	
+	.wrapper{
+	  max-width: 1200px;
+	  margin: auto;
+	  padding: 0 20px;
+	  display: flex;
+	  flex-wrap: wrap;
+	  align-items: center;
+	  justify-content: space-between;
+	}
+	.wrapper .box{
+	  background: #fff;
+	  width: calc(33% - 10px);
+	  padding: 25px;
+	  border-radius: 3px;
+	  box-shadow: 0px 4px 8px rgba(0,0,0,0.15);
+	}
+	.wrapper .box i.quote{
+	  font-size: 20px;
+	  color: green;
+	}
+	.wrapper .box .content{
+	  display: flex;
+	  flex-wrap: wrap;
+	  align-items: center;
+	  justify-content: space-between;
+	  padding-top: 10px;
+	}
+	.box .info .name{
+	  font-weight: 600;
+	  font-size: 17px;
+	}
+	.box .info .job{
+	  font-size: 16px;
+	  font-weight: 500;
+	  color: green;
+	}
+	.box .info .stars{
+	  margin-top: 2px;
+	}
+	.box .info .stars i{
+	  color: green;
+	}
+	.box .content .image{
+	  height: 75px;
+	  width: 75px;
+	  padding: 3px;
+	  background: green;
+	  border-radius: 50%;
+	}
+	.content .image img{
+	  height: 100%;
+	  width: 100%;
+	  object-fit: cover;
+	  border-radius: 50%;
+	  border: 2px solid #fff;
+	}
+	.box:hover .content .image img{
+	  border-color: #fff;
+	}
+	@media (max-width: 1045px) {
+	  .wrapper .box{
+		width: calc(50% - 10px);
+		margin: 10px 0;
+	  }
+	}
+	@media (max-width: 702px) {
+	  .wrapper .box{
+		width: 100%;
+	  }
+	}
+	
+	
+	/* Testimonial End*/
+	
+	
+	/* Services Section */
+	.services .boxes{
+	  display: flex;
+	  flex-wrap: wrap;
+	  justify-content: space-between;
+	}
+	.services .boxes .box{
+	  margin: 20px 0;
+	  width: calc(100% / 3 - 20px);
+	  text-align: center;
+	  border-radius: 12px;
+	  padding: 30px 10px;
+	  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12);
+	  cursor: default;
+	  transition: all 0.4s ease;
+	}
+	.services .boxes .box:hover{
+	  background: green;
+	  color: #fff;
+	}
+	.services .boxes .box .icon{
+	  height: 50px;
+	  width: 50px;
+	  background: green;
+	  border-radius: 50%;
+	  text-align: center;
+	  line-height: 50px;
+	  font-size: 18px;
+	  color: #fff;
+	  margin: 0 auto 10px auto;
+	  transition: all 0.4s ease;
+	}
+	.boxes .box:hover .icon{
+	  background-color: #fff;
+	  color: #4070f4;
+	}
+	.services .boxes .box:hover .topic,
+	.services .boxes .box:hover p{
+	  color: #0E2431;
+	  transition: all 0.4s ease;
+	}
+	.services .boxes .box:hover .topic,
+	.services .boxes .box:hover p{
+	  color: #fff;
+	}
+	
+	/* Footer Section Start */
+	
+	
+	
+	/* Footer Setion End*/
+	
+	</style>
+	{% comment %} Home Page Heading {% endcomment %}
+		<section class="hero-section" style="margin-top:0% ;">
+		  <div class="content">
+			<h2>Quality Home Care at Your Doorstep</h2>
+			<p>
+			 Home Services Hub offers comprehensive home maintenance solutions, including plumbing, electrical, cleaning, and more. 
+			 Expert professionals deliver quality services tailored to your needs, ensuring comfort and satisfaction.
+			</p>
+			{% comment %} <a href="#" class="btn btn-primary" style="background-color: green;">Book Now</a> {% endcomment %}
+		  </div>
+		</section>
+	
+		<script>
+		  const header = document.querySelector("header");
+		  const hamburgerBtn = document.querySelector("#hamburger-btn");
+		  const closeMenuBtn = document.querySelector("#close-menu-btn");
+	
+		  // Toggle mobile menu on hamburger button click
+		  hamburgerBtn.addEventListener("click", () => header.classList.toggle("show-mobile-menu"));
+	
+		  // Close mobile menu on close button click
+		  closeMenuBtn.addEventListener("click", () => hamburgerBtn.click());
+		</script>
+	
+	
+	{% comment %} Home Page About Section Start {% endcomment %}
+	
+	<!-- About Section Start -->
+	
+		<section class="about" id="about">
+		  <div class="content">
+			<div class="title"><span>About Our Home Services Hub</span></div>
+			<div class="about-details">
+			  <div class="left">
+				<img src="./static/images/About Us.avif" alt="" />
+			  </div>
+			  <div class="right">
+				<div class="topic">Your Ultimate Home Maintenance Solution</div>
+				<p>
+				 Home Services Hub is your all-in-one platform for efficient and reliable home maintenance services. 
+				 We connect you with trusted, skilled professionals across a range of services, including plumbing, 
+				 electrical work, cleaning, landscaping, and more. Our user-friendly platform allows you to book 
+				 appointments, receive quotes, and access quality service providers quickly and conveniently. 
+				 Each professional is vetted for expertise and reliability, ensuring you receive top-notch service 
+				 every time. Whether you need a one-time repair or regular upkeep, Home Services Hub streamlines the 
+				 process, providing personalized support and tailored solutions to keep your home in top shape.
+				</p>
+				<div class="button">
+				  {% comment %} <a href="#" class="btn btn-primary" style="background-color: green;">Our Services</a> {% endcomment %}
+				</div>
+			  </div>
+			</div>
+		  </div>
+		</section>
+	
+	{% comment %} Home Page About Section End {% endcomment %}
+	
+	{% comment %} Home Page Services Sections Start {% endcomment %}
+	
+	<section class="services" id="services">
+		  <div class="content">
+			<div class="title"><span>Our Services</span></div>
+			<div class="boxes">
+			  <div class="box">
+				<div class="icon">
+				  {% comment %} <i class="fa-solid fa-gear"></i> {% endcomment %}
+				</div>
+				<div class="topic">Plumbing</div>
+				<p>Expert repairs and installations for pipes, faucets, and fixtures to keep your water systems running smoothly.</p>
+			  </div>
+			  <div class="box">
+				<div class="icon">
+				<i class="fa-sharp fa-solid fa-cloud-bolt"></i>
+				</div>
+				<div class="topic">Electrical</div>
+				<p>Licensed electricians handle wiring, lighting, and outlet installations for safe and efficient power.</p>
+			  </div>
+			  <div class="box">
+				<div class="icon">
+				  {% comment %} <i class="fas fa-chart-line"></i> {% endcomment %}
+				</div>
+				<div class="topic">Landscaping</div>
+				<p> Design and maintenance for gardens, lawns, and outdoor spaces for a beautiful, healthy environment.</p>
+			  </div>
+			  <div class="box">
+				<div class="icon">
+				  {% comment %} <i class="fab fa-android"></i> {% endcomment %}
+				</div>
+				<div class="topic">HVAC</div>
+				<p>Heating, ventilation, and air conditioning services ensure your home remains comfortable year-round</p>
+			  </div>
+			  <div class="box">
+				<div class="icon">
+				  {% comment %} <i class="fas fa-camera-retro"></i> {% endcomment %}
+				</div>
+				<div class="topic">Home Security</div>
+				<p>Installation and monitoring of alarm systems and cameras for a secure, safe living environment.</p>
+			  </div>
+			  <div class="box">
+				<div class="icon">
+				  {% comment %} <i class="fas fa-tablet-alt"></i> {% endcomment %}
+				</div>
+				<div class="topic">Appliance Repair</div>
+				<p>Experienced technicians fix and maintain appliances like refrigerators, ovens, and washers.</p>
+			  </div>
+			</div>
+		  </div>
+		</section>
+	
+	{% comment %} Home Page Services Section End {% endcomment %}
+	
+	{% comment %} Testimonial Start {% endcomment %}
+	
+	<section>
+	
+		<div class="title" style="margin-top: 5%;"><span>What Our Clients Says</span></div>
+		<br>
+		<div class="wrapper">
+		<div class="box">
+		  <i class="fas fa-quote-left quote"></i>
+		  <p>Reliable, efficient, and friendly service. From plumbing to landscaping, they've become my go-to for all home needs.</p>
+		  <div class="content">
+			<div class="info">
+			  <div class="name">Nishat Tasnim</div>
+			  <div class="job">ML Researcher</div>
+			  <div class="stars">
+				<i class="fas fa-star"></i>
+				<i class="fas fa-star"></i>
+				<i class="far fa-star"></i>
+				<i class="far fa-star"></i>
+				<i class="far fa-star"></i>
+			  </div>
+			</div>
+			<div class="image">
+			  <img src="./static/images/Nishat.jpg" alt="">
+			</div>
+		  </div>
+		</div>
+		<div class="box">
+		  <i class="fas fa-quote-left quote"></i>
+		  <p>Their quick response and quality work exceeded my expectations. I trust them for all my home repairs.
+	
+		  </p>
+		  <div class="content">
+			<div class="info">
+			  <div class="name">Yakin Iqra</div>
+			  <div class="job">Web Developer</div>
+			  <div class="stars">
+				<i class="fas fa-star"></i>
+				<i class="fas fa-star"></i>
+				<i class="fas fa-star"></i>
+				<i class="far fa-star"></i>
+				<i class="far fa-star"></i>
+			  </div>
+			</div>
+			<div class="image">
+			  <img src="./static/images/Iqra.jpg" alt="">
+			</div>
+		  </div>
+		</div>
+		<div class="box">
+		  <i class="fas fa-quote-left  quote"></i>
+		  <p>Great platform! The services were reliable, and the booking process was simple. I'll definitely use them again
+	
+		  </p>
+		  <div class="content">
+			<div class="info">
+			  <div class="name">Soma Dash</div>
+			  <div class="job">Musician</div>
+			  <div class="stars">
+				<i class="fas fa-star"></i>
+				<i class="fas fa-star"></i>
+				<i class="fas fa-star"></i>
+				<i class="fas fa-star"></i>
+				<i class="far fa-star"></i>
+			  </div>
+			</div>
+			<div class="image">
+			  <img src="./static/images/Soma.jpg" alt="">
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</section>
+	<br>
+	<br>
+	<br>
+	
+{% endblock %}
