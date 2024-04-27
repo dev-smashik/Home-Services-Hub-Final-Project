@@ -1,0 +1,119 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+<style>
+    th{
+    color:black;
+    font-weight:bold;
+    }
+</style>
+
+	<div class="w3l_banner_info" style="height:10px">
+		<div class="slider1">
+			<div class="callbacks_container">
+				<ul class="rslides" id="slider3">
+					<li>
+						<div class="slider1-img" style="height:90px">
+							<div class="slider_banner_info">
+
+
+							</div>
+						</div>
+					</li>
+
+
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- //banner-slider -->
+</div>
+</header>
+
+<style>
+    th,tr{text-align : center}
+</style>
+
+<div class="container-fluid" style="margin-top:10%">
+               <div class="container">
+                            <div class="container-fluid">
+                               <h2 style="font-weight:bold;font-family : 'Monotype Corsiva' ; color : #E6120E ;margin-top:5%" align="center">Customer Service Survey</h2>
+                                <p class="text-center">Please take a moment to fill out this form</p>
+                                <hr>
+                            </div>
+<form method="post">
+    {% csrf_token %}
+                   <p class="font-weight-bold" style="font-size:15px">Overall Satisfaction of service</p>
+                                <table class="table table-hover">
+
+                                    <tr>
+                                      <th style="">&nbsp;</th>
+                                      <th style="color:red">Very satisfied</th>
+                                      <th style="color:red">Satisfied</th>
+                                      <th style="color:red">Neutral</th>
+                                      <th style="color:red">Unsatisfied</th>
+                                      <th style="color:red">Very unsatisfied</th>
+                                  </tr>
+
+                                    <tr>
+                                      <th style="color:red">Friendliness</th>
+                                      <th style="color:black"><input type="radio" value="Very satisfied" name="Friendliness" required></th>
+                                      <th style="color:black"><input type="radio" value="Satisfied" name="Friendliness" required></th>
+                                      <th style="color:black"><input type="radio" value="Neutral" name="Friendliness" required></th>
+                                      <th style="color:black"><input type="radio" value="Unsatisfied" name="Friendliness" required></th>
+                                      <th style="color:black"><input type="radio" value="Very unsatisfied" name="Friendliness" required></th>
+                                  </tr>
+
+                                    <tr>
+                                      <th style="color:red">Knowledge</th>
+                                     <th style="color:black"><input type="radio" value="Very satisfied" name="Knowledge" required></th>
+                                      <th style="color:black"><input type="radio" value="Satisfied" name="Knowledge" required></th>
+                                      <th style="color:black"><input type="radio" value="Neutral" name="Knowledge" required></th>
+                                      <th style="color:black"><input type="radio" value="Unsatisfied" name="Knowledge" required></th>
+                                      <th style="color:black"><input type="radio" value="Very unsatisfied" name="Knowledge" required></th>
+                                  </tr>
+
+
+                                    <tr>
+                                      <th style="color:red">Quickness</th>
+                                     <th style="color:black"><input type="radio" value="Very satisfied" name="Quickness" required></th>
+                                      <th style="color:black"><input type="radio" value="Satisfied" name="Quickness" required></th>
+                                      <th style="color:black"><input type="radio" value="Neutral" name="Quickness" required></th>
+                                      <th style="color:black"><input type="radio" value="Unsatisfied" name="Quickness" required></th>
+                                      <th style="color:black"><input type="radio" value="Very unsatisfied" name="Quickness" required></th>
+                                  </tr>
+
+
+
+
+                      </table>
+
+                   <p class="font-weight-bold mb-2" style="font-size:15px">Would you use our customer service in the future?</p>
+                    <input type="radio" value="Yes" name="infuture" required> Yes
+                   <br>
+                   <input type="radio" value="No" name="infuture" required> No
+                   <br>
+                    <input type="radio" value="Maybe" name="infuture" required> Maybe
+                   <br>
+                   <p class="font-weight-bold my-3" style="font-size:15px">How can we improve our service?</p>
+                   <textarea name="suggestion" placeholder="Type here..." class="form-control" required></textarea>
+                   <br>
+                   <input type="submit" value="submit" class="btn btn-primary">
+</form>
+             </div>
+</div>
+<br>
+
+{% if error == "no" %}
+<script>
+    alert('Feedback sent successfully.');
+    window.location=('{% url 'customer_order' %}');
+</script>
+{% endif %}
+{% if error == "yes" %}
+<script>
+    alert('Something Went Wrong. Please try again');
+</script>
+{% endif %}
+
+    {% endblock %}
