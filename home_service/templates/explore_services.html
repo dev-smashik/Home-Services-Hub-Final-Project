@@ -1,0 +1,41 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+<style>
+    th{
+    color:black;
+    font-weight:bold;
+    }
+</style>
+
+
+
+<div class="container-fluid" style="margin-top:10%">
+               <div align="center" class="container">
+                            <div class="container-fluid">
+                               <h2 style="font-weight:bold;font-family : 'Poppins' ; color : black ;margin-top:5%" align="center">{{ser.category}}</h2><hr>
+                            </div>
+                   {% for i in order %}
+                            <div class="row" style="margin-bottom:1%;border-radius:8px;padding:12px;width:80%;border:1px solid lightgrey">
+                                <div class="col-md-4">
+                                    <img src="{{i.image.url}}" style="width:200px;border-radius:50%;height:200px">
+                                </div>
+                                <div class="col-md-4" align="left">
+                                    <h4 style="font-weight:bold">{{i.user.first_name}} {{i.user.last_name}}</h4>
+                                    <ul style="color:grey">
+                                        <li>Mobile No. :- {{i.contact}}</li>
+                                        <li>Address :- {{i.address}}</li>
+                                        <li>Work :- {{i.experience}} year</li>
+                                        <li>Experience :- {{i.contact}}</li>
+                                        <a href="{% url 'booking' i.id %}" ><button class="btn btn-success" style="margin-top:8%;width:60%">Book Now</button></a>
+                                    </ul>
+                                </div>
+                                <div class="col-md-4">
+                                     <img src="{{i.id_card.url}}" style="width:75%">
+                                    <h4>{{i.id_type}}</h4>
+                                </div>
+                            </div>
+                   {% endfor %}
+               </div>
+</div>
+    {% endblock %}
